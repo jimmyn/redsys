@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedSys</title>
+    <script src="https://sis-i.redsys.es:25443/sis/NC/inte/redsys2.js"></script>
+    <style>
+      .input-wrapper {
+        height: 30px;
+      }
+    </style>
+  </head>
+  
+  <body onload="loadRedsysForm()">
+    <div id="card-form">
+      <div class="cardinfo-card-number">
+        <label class="cardinfo-label" for="card-number">Card number</label>
+        <div class="input-wrapper" id="card-number"></div>
+      </div>
+      <div class="expiry-date">
+        <div class="cardinfo-exp-month">
+          <label class="cardinfo-label" for="expiration-month"
+          >Month (MM)</label
+          >
+          <div class="input-wrapper" id="expiration-month"></div>
+        </div>
+        <div class="cardinfo-exp-year">
+          <label class="cardinfo-label" for="expiration-year">Year (YY)</label>
+          <div class="input-wrapper" id="expiration-year"></div>
+        </div>
+        <div class="cardinfo-cvv">
+          <label class="cardinfo-label" for="cvv">CVV</label>
+          <div class="input-wrapper" id="cvv"></div>
+        </div>
+        <div class="cardinfo-submit">
+          <div class="input-wrapper" id="submit"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const orderId = Math.round(Math.random() * 10000).toString();
+    window.addEventListener("message", function receiveMessage(ev) {
+      console.log(ev);
+      if (ev.data.idOper && ev.origin === REDSYS_DOMAIN) {
+        console.log("Operation Id:", ev.data.idOper);
+        console.log("Order Id:", orderId);
+      }
+    });
+    getCardInput("card-number", "");
+    getExpirationMonthInput("expiration-month", "");
+    getExpirationYearInput("expiration-year", "");
+    getCVVInput("cvv", "");
+    getPayButton("submit", "", "Pay now", "999008881", "1", orderId);
+  </script>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "redsys",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "easy-soap-request": "^2.6.0",
+    "fast-xml-parser": "^3.12.20",
+    "jsontoxml": "^1.0.1",
+    "node-redsys-api": "^0.0.5",
+    "redsys-easy": "^2.0.0",
+    "request": "^2.88.0",
+    "soap": "latest",
+    "xmlhttp-request": "^0.4.1"
+  }
+}

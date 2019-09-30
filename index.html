@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedSys</title>
+    <script src="https://sis.redsys.es/sis/NC/redsys.js"></script>
+  </head>
+
+  <body onload="loadRedsysForm()">
+    <div id="card-form"></div>
+  </body>
+  <script>
+    const orderId = Math.round(Math.random() * 10000).toString();
+    window.addEventListener("message", function receiveMessage(ev) {
+      if (ev.data.idOper && ev.origin === REDSYS_DOMAIN) {
+        console.log('Operation Id:', ev.data.idOper);
+        console.log('Order Id:', orderId);
+      }
+    });
+    getInSiteForm(
+      "card-form",
+      "width:100%",
+      "",
+      "",
+      "",
+      "Pay now",
+      "336985833",
+      "1",
+      orderId
+    );
+  </script>
+</html>
